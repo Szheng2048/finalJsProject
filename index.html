@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yahtzee</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="main.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Yahtzee</h1>
+    </header>
+    <div id="diceRollSection">
+
+    </div>
+    <main>
+        <div id="upperSection">
+            <table>
+                <tr>
+                  <th>Upper Section</th>
+                  <th>How To Score</th>
+                  <th>Points</th>
+                  <th>Click On<br> This Column <br>to Score</th>
+                </tr>
+                <tr>
+                  <td>Aces<img class="informativeDice" src="diceImages/dice-face-1.png"> = 1</td>
+                  <td>Count and Add Only Aces</td>
+                  <td class="results"></td>
+                  <td class="click"></td>
+                </tr>
+                <tr>
+                  <td>Twos<img class="informativeDice" src="diceImages/dice-face-2.png"> = 2</td>
+                  <td>Count and Add Only Twos</td>
+                  <td class="results"></td>
+                  <td class="click"></td>
+                </tr>
+                <tr>
+                    <td>Threes<img class="informativeDice" src="diceImages/dice-face-3.png"> = 3</td>
+                    <td>Count and Add Only Threes</td>
+                    <td class="results"></td>
+                    <td class="click"></td>
+                </tr>
+                <tr>
+                    <td>Fours<img class="informativeDice" src="diceImages/dice-face-4.png"> = 4</td>
+                    <td>Count and Add Only Fours</td>
+                    <td class="results"></td>
+                    <td class="click"></td>
+                </tr>
+                <tr>
+                    <td>Fives<img class="informativeDice" src="diceImages/dice-face-5.png"> = 5</td>
+                    <td>Count and Add Only Fives</td>
+                    <td class="results"></td>
+                    <td class="click"></td>
+                </tr>
+                <tr>
+                    <td>Sixes<img class="informativeDice" src="diceImages/dice-face-6.png"> = 6</td>
+                    <td>Count and Add Only Sixes</td>
+                    <td class="results"></td>
+                    <td class="click"></td>
+                </tr>
+              </table>
+        </div>
+        <div id="lowerSection">
+            <table>
+                <tr>
+                  <th>Lower Section</th>
+                  <th>How To Score</th>
+                  <th>Points</th>
+                  <th>Click On<br> This Column <br>to Score</th>
+                </tr>
+                <tr>
+                  <td>3 of a kind</td>
+                  <td>Add Total Of All Dice</td>
+                  <td class="results"></td>
+                  <td class="click"></td>
+                </tr>
+                <tr>
+                  <td>4 of a kind</td>
+                  <td>Add Total of All Dice</td>
+                  <td class="results"></td>
+                  <td class="click"></td>
+                </tr>
+                <tr>
+                    <td>Full House</td>
+                    <td>SCORE 25</td>
+                    <td class="results"></td>
+                    <td class="click"></td>
+                </tr>
+                <tr>
+                    <td>Sm.Straight <sup>Sequence Of 4</sup></td>
+                    <td>SCORE 30</td>
+                    <td class="results"></td>
+                    <td class="click"></td>
+                </tr>
+                <tr>
+                    <td>Lg.Straight <sup>Sequence Of 5</sup></td>
+                    <td>SCORE 40</td>
+                    <td class="results"></td>
+                    <td class="click"></td>
+                </tr>
+                <tr>
+                    <td>YAHTZEE <sup>5 of a kind</sup></td>
+                    <td>SCORE 50</td>
+                    <td class="results"></td>
+                    <td class="click"></td>
+                </tr>
+                <tr>
+                    <td>Chance</td>
+                    <td>Score Total of All 5 Dice</td>
+                    <td class="results"></td>
+                    <td class="click"></td>
+                </tr>
+              </table>
+        </div>
+    </main>
+    <div id="finalScoreSection">
+
+    </div>
+</body>
+</html>

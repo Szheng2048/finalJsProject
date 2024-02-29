@@ -1,0 +1,27 @@
+
+main {
+    border: 1px solid black;
+    
+}
+
+.informativeDice {
+    width: 15px;
+    height: 15px;
+    padding-left: 10px;
+}
+
+table, th, td {
+    border: 2px solid;
+}  
+
+table {
+    padding: 5px;
+}
+
+sup {
+    font-size: 10px;
+}
+
+.click {
+    background-color: green;
+}
