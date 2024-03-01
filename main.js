@@ -2,6 +2,15 @@
 const rollButton = document.getElementById("rollButton")
 const rerollButton = document.getElementById('reRollButton')
 const rollingDice = document.querySelectorAll(".rollingDice")
+const upperSectionClickitems = document.querySelectorAll('.singleNum')
+const subTotalingUppers = document.querySelector("#subTotalingUppers")
+const upperResults = document.querySelectorAll(".resultsUppers")
+const subtotalOfUppers = document.getElementById('subtotalUppersResult')
+const upperBonus = document.getElementById('upperBonus')
+const upperBonusResults = document.getElementById("upperBonusResults")
+const finalUppersButton = document.getElementById('finalUppers')
+const finalUppersResult = document.getElementById('finalUppersResults')
+
 
 let d6Array = []
 let reRollArray = []
@@ -11,12 +20,8 @@ let conditionCount = 0
 let rerollCount = 0
 //as long as rerollCount is not zero reroll can be clicked
 let maxRerollCount = 0
-//amount of times the dice is selecter after roll
-
-//dice rolling function**/
-
-
-
+//amount of times the dice is selected after roll
+let upperSectionClickCount = 6
 
 
 //*eventListeners********/
@@ -41,10 +46,14 @@ for(let individualDice of rollingDice){
                 console.log(reRollArray)
             }
         }
-        rerollCount++
+        if(maxRerollCount <=1){
+            rerollCount++
+        }
     })
 }
 //builds an array for the reroll button to sort through and remove from the original array
+
+
 
 rerollButton.addEventListener("click",()=>{
     d6Array = replaceItemInArray(d6Array,reRollArray)
@@ -57,6 +66,68 @@ rerollButton.addEventListener("click",()=>{
         rerollCount = 0
     }
     console.log(d6Array)
+})
+
+//************uppersection numbers event listener */
+
+for(let uppersectionNumber of upperSectionClickitems){
+    uppersectionNumber.addEventListener("click",(event)=>{
+        if(conditionCount !== 0 && rerollCount === 0){
+            let number = event.target.id
+            number = parseInt(number.slice(3))
+            console.log(typeof number)
+            let results = upperSectionLogic(d6Array,number)
+            let elementToChange = document.querySelector(`#resultOf${number}`)
+            elementToChange.innerHTML = results
+            upperSectionClickCount --
+            //math portion of logic
+            conditionCount = 0
+            maxRerollCount = 0
+            d6Array.length = 0
+            //resets the arrays to allow another roll
+            event.target.style.pointerEvents = "none"
+            event.target.style.backgroundColor = "red"
+            //lets user interface know that this button can't be clicked again
+            resetImages()
+        }
+    })
+}
+
+//*********upperSectionTotaling */
+subTotalingUppers.addEventListener("click",(event)=>{
+    if(upperSectionClickCount === 0){
+        let total = 0
+        for(let value of upperResults){
+            total += parseInt(value.innerHTML)
+        }
+        console.log(total)
+        subtotalOfUppers.innerHTML = `${total}`
+        event.target.style.pointerEvents = "none"
+        event.target.style.backgroundColor = "red"
+        upperSectionClickCount --
+    }
+})
+
+upperBonus.addEventListener('click',(event)=>{
+    if(upperSectionClickCount === -1){
+        let total = parseInt(subtotalOfUppers.innerHTML)
+        let bonus = 0
+        event.target.style.pointerEvents = "none"
+        event.target.style.backgroundColor = "red"
+        if(total>= 63){
+            bonus += 35
+        }
+        upperBonusResults.innerHTML = bonus
+        upperSectionClickCount--
+    }
+})
+
+finalUppersButton.addEventListener('click',(event)=>{
+    if(upperSectionClickCount === -2){
+        finalUppersResult.innerHTML = parseInt(subtotalOfUppers.innerHTML) + parseInt(upperBonusResults.innerHTML)
+        event.target.style.pointerEvents = "none"
+        event.target.style.backgroundColor = "red"
+    }
 })
 
 
@@ -76,10 +147,28 @@ function replaceItemInArray(originalArr,filterArr){
     }
     return originalArr
 }
+
+function upperSectionLogic(arr,num){
+    let value = 0
+    for(let dice of arr){
+        if(dice === num){
+            value += num
+        }
+    }
+    return value
+}
+
+function resetImages(){
+    for(let images of rollingDice){
+        images.src = "diceImages/yahtzeeBeforeBonus.png"
+    }
+}
+
+
 //true or false functions
 
 
 
 
 
-//**reset function */
+//**reset functions */
