@@ -31,16 +31,17 @@ rollButton.addEventListener("click",()=>{
 
 for(let individualDice of rollingDice){
     individualDice.addEventListener('click',(event)=>{
-        let timeSelected = 0
         if(conditionCount === 1){
-            if(timeSelected === 0){
-                reRollArray.push(event.target.src.slice(46,-4))
+            if(!event.target.classList.contains("selected")){
+                event.target.classList.add("selected")
+                reRollArray.push(parseInt(event.target.src.slice(46,-4)))
                 console.log(reRollArray)
-                timeSelected = 1
             }
         }
     })
 }
+//builds an array for the reroll button to sort through and remove from the original array
+
 
 
 
@@ -50,6 +51,7 @@ for(let individualDice of rollingDice){
 function randomD6result(){
     return Math.ceil(Math.random()*6)
 }
+
 
 
 //true or false functions

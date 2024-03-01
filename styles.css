@@ -46,7 +46,10 @@ main {
 .rollingDice {
     width: 40px;
     height: 40px;
+}
 
+.selected {
+    transform: scale(1.2)
 }
 
 .informativeDice {
