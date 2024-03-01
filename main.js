@@ -150,7 +150,11 @@ const yahtzeeClicker =document.getElementById('yahtzeeClicker')
 const yahtzeeResults = document.getElementById('yahtzeeResults')
 const totalingUppersClicker= document.getElementById('totalingUppersClicker')
 const totalingUppersResults = document.getElementById('totalingUppersResults')
+const bonusYahtzeeClicker = document.getElementById("bonusYahzeeClicker")
+const bonusYahtzeeFinaleClicker = document.getElementById('yahtzeeFinalizer')
+const bonusYahtzeeFinaleResults = document.getElementById('yahtzeeFinalScore')
 let lowerSectionClickerCount = 7
+let yahtzeeCount = 0
 //************lowersection point system event listeners */
 threeKindClicker.addEventListener('click',(event)=>{
     if(conditionCount !== 0 && rerollCount === 0){
@@ -275,8 +279,54 @@ totalingUppersClicker.addEventListener('click',(event)=>{
     }
 })
 
+yahtzeeClicker.addEventListener('click',(event)=>{
+    if(conditionCount !== 0 && rerollCount === 0 && yahtzeeCount === 0){
+        let choice = yahtZee(d6Array)
+        if(choice === true){
+            yahtzeeResults.innerHTML === 50
+        }
+        event.target.style.pointerEvents = "none"
+        event.target.style.backgroundColor = "red"
+        lowerSectionClickerCount --
+        conditionCount = 0
+        maxRerollCount = 0
+        d6Array.length = 0
+        yahtzeeCount ++
+    }
+})
 
+bonusYahtzeeClicker.addEventListener('click',(event)=>{
+    if(conditionCount !== 0 && rerollCount === 0 && yahtzeeCount >0 && yahtzeeCount<5 && lowerSectionClickerCount !== 0){
+        yahtzeeCount++
+        let choice = yahtZee(d6Array)
+        if(choice === true){
+            if(yahtzeeCount === 2){
+                document.getElementById('bonus1').src = "diceImages/yahtzeeBonus.png"
+            } else if(yahtzeeCount === 3){
+                document.getElementById('bonus2').src = "diceImages/yahtzeeBonus.png"
+            } else if(yahtzeeCount === 4){
+                document.getElementById('bonus3').src = "diceImages/yahtzeeBonus.png"
+                event.target.style.pointerEvents = "none"
+                event.target.style.backgroundColor = "red"
+            }
+        }
+        conditionCount = 0
+        maxRerollCount = 0
+        d6Array.length = 0
+    }
+})
 
+bonusYahtzeeFinaleClicker.addEventListener('click',(event)=>{
+    if(lowerSectionClickerCount === 0){
+        bonusYahtzeeFinaleResults.innerHTML === (yahtzeeCount-1)*100
+        event.target.style.pointerEvents = "none"
+        event.target.style.backgroundColor = "red"
+        lowerSectionClickerCount --
+    }
+})
+
+//******** finale of lowerSection */
+document.getElementById()
 
 //*******logic functions */
 function randomD6result(){
