@@ -2,6 +2,10 @@
 const rollButton = document.getElementById("rollButton")
 const rerollButton = document.getElementById('reRollButton')
 const rollingDice = document.querySelectorAll(".rollingDice")
+
+
+
+//*************Upper Variables */
 const upperSectionClickitems = document.querySelectorAll('.singleNum')
 const subTotalingUppers = document.querySelector("#subTotalingUppers")
 const upperResults = document.querySelectorAll(".resultsUppers")
@@ -130,7 +134,12 @@ finalUppersButton.addEventListener('click',(event)=>{
     }
 })
 
-
+//***********lowersection variables*/
+const threeKindClicker = document.getElementById("threesClicker")
+const threeKindResults = document.getElementById("threeOfResults")
+const fourKindClicker = document.getElementById("foursClicker")
+const fourkindResults = document.getElementById('fourOfResults')
+const fullHouseClicker = document.getElementById('fullHouse')
 
 
 //*******logic functions */
@@ -164,9 +173,108 @@ function resetImages(){
     }
 }
 
+function sortInOrder(arr){
+
+}
+
 
 //true or false functions
-
+function threeOfaKind(arr){
+    let testObj = {}
+    for(let number of arr){
+        if(testObj[number] === undefined){
+            testObj[number] = 1
+        } else {
+            testObj[number] ++
+        }
+    }
+    for(let key in testObj){
+        if(testObj[key] >=3){
+            return true
+        } else {return false}
+    }
+}
+function threeOfaKind(arr){
+    let testObj = {}
+    for(let number of arr){
+        if(testObj[number] === undefined){
+            testObj[number] = 1
+        } else {
+            testObj[number] ++
+        }
+    }
+    for(let key in testObj){
+        if(testObj[key] >=3){
+            return true
+        }
+    }
+    return false
+}
+function fourOfaKind(arr){
+    let testObj = {}
+    for(let number of arr){
+        if(testObj[number] === undefined){
+            testObj[number] = 1
+        } else {
+            testObj[number] ++
+        }
+    }
+    for(let key in testObj){
+        if(testObj[key] >=4){
+            return true
+        }
+    }
+    return false
+}
+function fullHouse(arr){
+    let testObj = {}
+    for(let number of arr){
+        if(testObj[number] === undefined){
+            testObj[number] = 1
+        } else {
+            testObj[number] ++
+        }
+    }
+    let totalKey = 0
+    for(let key in testObj){
+        if(testObj[key]=== 4){
+            return false
+        }
+        totalKey ++
+    }
+    return totalKey === 2
+}
+function smallStraight(arr){
+    arr.sort()
+    if((arr[3]===arr[2]+1 && arr[4]===arr[2]+2 && arr[1]===arr[2]-1)||(arr[0]===arr[2]-2&&arr[1]===arr[2]-1&&arr[3]===arr[2]+1)){
+        return true
+    } else {
+        return false
+    }
+}
+function largeStraight(arr){
+    arr.sort()
+    if(arr[3]===arr[2]+1 && arr[4]===arr[2]+2 && arr[1]===arr[2]-1 && arr[0]===arr[2]-2){
+        return true
+    } else {
+        return false
+    }
+}
+function yahtZee(arr){
+    let testObj = {}
+    for(let number of arr){
+        if(testObj[number] === undefined){
+            testObj[number] = 1
+        } else {
+            testObj[number] ++
+        }
+    }
+    let totalKey= 0
+    for(let key in testObj){
+        totalKey++
+    }
+    return totalKey === 1
+}
 
 
 
