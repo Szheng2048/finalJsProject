@@ -46,8 +46,7 @@ for(let individualDice of rollingDice){
         if(conditionCount === 1&&maxRerollCount<=1){
             if(!event.target.classList.contains("selected")){
                 event.target.classList.add("selected")
-                reRollArray.push(parseInt(event.target.src.slice(46,-4)))
-                console.log(reRollArray)
+                reRollArray.push(parseInt(event.target.src.slice(48,-4)))
             }
         }
         if(maxRerollCount <=1){
@@ -79,7 +78,6 @@ for(let uppersectionNumber of upperSectionClickitems){
         if(conditionCount !== 0 && rerollCount === 0){
             let number = event.target.id
             number = parseInt(number.slice(3))
-            console.log(typeof number)
             let results = upperSectionLogic(d6Array,number)
             let elementToChange = document.querySelector(`#resultOf${number}`)
             elementToChange.innerHTML = results
@@ -131,6 +129,7 @@ finalUppersButton.addEventListener('click',(event)=>{
         finalUppersResult.innerHTML = parseInt(subtotalOfUppers.innerHTML) + parseInt(upperBonusResults.innerHTML)
         event.target.style.pointerEvents = "none"
         event.target.style.backgroundColor = "red"
+        upperSectionClickCount--
     }
 })
 
@@ -139,7 +138,144 @@ const threeKindClicker = document.getElementById("threesClicker")
 const threeKindResults = document.getElementById("threeOfResults")
 const fourKindClicker = document.getElementById("foursClicker")
 const fourkindResults = document.getElementById('fourOfResults')
-const fullHouseClicker = document.getElementById('fullHouse')
+const fullHouseClicker = document.getElementById('fullHouseClicker')
+const fullHouseResults = document.getElementById('fullHouseResults')
+const smStraightClicker = document.getElementById('smallStraightClicker')
+const smStraightResults = document.getElementById('smallStraightResults')
+const lgStraightClicker = document.getElementById('largeStraightClicker')
+const lgStraightResults = document.getElementById('largeStraightResults')
+const chanceClicker = document.getElementById('chanceClicker')
+const chanceResults = document.getElementById('chanceResults')
+const yahtzeeClicker =document.getElementById('yahtzeeClicker')
+const yahtzeeResults = document.getElementById('yahtzeeResults')
+const totalingUppersClicker= document.getElementById('totalingUppersClicker')
+const totalingUppersResults = document.getElementById('totalingUppersResults')
+let lowerSectionClickerCount = 7
+//************lowersection point system event listeners */
+threeKindClicker.addEventListener('click',(event)=>{
+    if(conditionCount !== 0 && rerollCount === 0){
+        let choice = threeOfaKind(d6Array)
+        let total = 0
+        if(choice === true){
+            for(let item of d6Array){
+                total += item
+            }
+        }
+        threeKindResults.innerHTML = total
+        event.target.style.pointerEvents = "none"
+        event.target.style.backgroundColor = "red"
+        lowerSectionClickerCount --
+        conditionCount = 0
+        maxRerollCount = 0
+        d6Array.length = 0
+        resetImages()
+    }
+})
+
+fourKindClicker.addEventListener('click',(event)=>{
+    if(conditionCount !== 0 && rerollCount === 0){
+        let choice = fourOfaKind(d6Array)
+        let total = 0
+        if(choice === true){
+            for(let item of d6Array){
+                total += item
+            }
+        }
+        fourkindResults.innerHTML = total
+        console.log(total)
+        event.target.style.pointerEvents = "none"
+        event.target.style.backgroundColor = "red"
+        lowerSectionClickerCount --
+        conditionCount = 0
+        maxRerollCount = 0
+        d6Array.length = 0
+        resetImages()
+    }
+})
+
+fullHouseClicker.addEventListener('click',(event)=>{
+    if(conditionCount !== 0 && rerollCount === 0){
+        let choice = fullHouse(d6Array)
+        let total = 0
+        if(choice === true){
+            total += 25
+        }
+        fullHouseResults.innerHTML = total
+        console.log(total)
+        event.target.style.pointerEvents = "none"
+        event.target.style.backgroundColor = "red"
+        lowerSectionClickerCount --
+        conditionCount = 0
+        maxRerollCount = 0
+        d6Array.length = 0
+        resetImages()
+    }
+})
+
+smStraightClicker.addEventListener('click',(event)=>{
+    if(conditionCount !== 0 && rerollCount === 0){
+        let choice = smallStraight(d6Array)
+        let total = 0
+        if(choice === true){
+            total += 30
+        }
+        smStraightResults.innerHTML = total
+        console.log(total)
+        event.target.style.pointerEvents = "none"
+        event.target.style.backgroundColor = "red"
+        lowerSectionClickerCount --
+        conditionCount = 0
+        maxRerollCount = 0
+        d6Array.length = 0
+        resetImages()
+    }
+})
+
+lgStraightClicker.addEventListener('click',(event)=>{
+    if(conditionCount !== 0 && rerollCount === 0){
+        let choice = largeStraight(d6Array)
+        let total = 0
+        if(choice === true){
+            total += 40
+        }
+        lgStraightResults.innerHTML = total
+        event.target.style.pointerEvents = "none"
+        event.target.style.backgroundColor = "red"
+        lowerSectionClickerCount --
+        conditionCount = 0
+        maxRerollCount = 0
+        d6Array.length = 0
+        resetImages()
+    }
+})
+
+chanceClicker.addEventListener('click',(event)=>{
+    if(conditionCount !== 0 && rerollCount === 0){
+        let total = 0
+        for(let item of d6Array){
+            total += item
+        }
+        chanceResults.innerHTML = total
+        console.log(total)
+        event.target.style.pointerEvents = "none"
+        event.target.style.backgroundColor = "red"
+        lowerSectionClickerCount --
+        conditionCount = 0
+        maxRerollCount = 0
+        d6Array.length = 0
+        resetImages()
+    }
+})
+
+totalingUppersClicker.addEventListener('click',(event)=>{
+    if(upperSectionClickCount === -3){
+        event.target.style.pointerEvents = "none"
+        event.target.style.backgroundColor = "red"
+        totalingUppersResults.innerHTML = finalUppersResult.innerHTML
+    }
+})
+
+
 
 
 //*******logic functions */
@@ -173,10 +309,6 @@ function resetImages(){
     }
 }
 
-function sortInOrder(arr){
-
-}
-
 
 //true or false functions
 function threeOfaKind(arr){
@@ -193,22 +325,6 @@ function threeOfaKind(arr){
             return true
         } else {return false}
     }
-}
-function threeOfaKind(arr){
-    let testObj = {}
-    for(let number of arr){
-        if(testObj[number] === undefined){
-            testObj[number] = 1
-        } else {
-            testObj[number] ++
-        }
-    }
-    for(let key in testObj){
-        if(testObj[key] >=3){
-            return true
-        }
-    }
-    return false
 }
 function fourOfaKind(arr){
     let testObj = {}
