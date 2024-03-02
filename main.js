@@ -46,12 +46,13 @@ for(let individualDice of rollingDice){
         if(conditionCount === 1&&maxRerollCount<=1){
             if(!event.target.classList.contains("selected")){
                 event.target.classList.add("selected")
-                reRollArray.push(parseInt(event.target.src.slice(48,-4)))
+                reRollArray.push(imageSrc(event.target.src))
             }
         }
         if(maxRerollCount <=1){
             rerollCount++
         }
+        console.log(reRollArray)
     })
 }
 //builds an array for the reroll button to sort through and remove from the original array
@@ -276,6 +277,7 @@ totalingUppersClicker.addEventListener('click',(event)=>{
         event.target.style.pointerEvents = "none"
         event.target.style.backgroundColor = "red"
         totalingUppersResults.innerHTML = finalUppersResult.innerHTML
+        upperSectionClickCount --
     }
 })
 
@@ -296,7 +298,7 @@ yahtzeeClicker.addEventListener('click',(event)=>{
 })
 
 bonusYahtzeeClicker.addEventListener('click',(event)=>{
-    if(conditionCount !== 0 && rerollCount === 0 && yahtzeeCount >0 && yahtzeeCount<5 && lowerSectionClickerCount !== 0){
+    if(conditionCount !== 0 && rerollCount === 0 && yahtzeeCount >0 && yahtzeeCount<5 && lowerSectionClickerCount >= 0){
         yahtzeeCount++
         let choice = yahtZee(d6Array)
         if(choice === true){
@@ -326,7 +328,37 @@ bonusYahtzeeFinaleClicker.addEventListener('click',(event)=>{
 })
 
 //******** finale of lowerSection */
-document.getElementById()
+
+const totalingLowerClicker = document.getElementById('totalingLowerClicker')
+const totalingLowerResults = document.getElementById('totalingLowerResults')
+const allLower = document.querySelectorAll('.lowersResults')
+totalingLowerClicker.addEventListener('click',(event)=>{
+    if(lowerSectionClickerCount === -1){
+        let total = 0
+        for(let item of allLower){
+            total+=parseInt(item.innerHTML)
+        }
+        totalingLowerResults.innerHTML = total
+        event.target.style.pointerEvents = "none"
+        event.target.style.backgroundColor = "red"
+        lowerSectionClickerCount --
+    }
+})
+//lowerSectionClickerCount === -2
+//upperSectionClickCount === -4
+
+const finalClick = document.getElementById('finalClick')
+const final = document.getElementById('final')
+
+finalClick.addEventListener('click',(event)=>{
+    if(lowerSectionClickerCount === -2 && upperSectionClickCount === -4){
+        final.innerHTML = parseInt(totalingLowerResults)+ parseInt(totalingUppersResults)
+        event.target.style.pointerEvents = "none"
+        event.target.style.backgroundColor = "red"
+        lowerSectionClickerCount = -3
+        upperSectionClickCount = -5
+    }
+})
 
 //*******logic functions */
 function randomD6result(){
@@ -359,6 +391,19 @@ function resetImages(){
     }
 }
 
+
+
+function imageSrc(str){
+    let alphabetAndSymbol = ":/.-qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"
+    let newStr = ''
+    for(let item of str){
+        if(alphabetAndSymbol.indexOf(item)===-1){
+            newStr+= item
+        }
+    }
+    return parseInt(newStr[newStr.length-1])
+}
+console.log(imageSrc("124apqrj3./:"))
 
 //true or false functions
 function threeOfaKind(arr){
