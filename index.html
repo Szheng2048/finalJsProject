@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yahtzee</title>
     <link rel="stylesheet" href="styles.css">
+    <script defer src="dom.js"></script>
+    <script defer src="function.js"></script>
     <script defer src="main.js"></script>
 </head>
 <body>
@@ -30,11 +32,11 @@
             <p>ReRoll</p>
         </div>
         <div id="diceBox">
-            <img class="rollingDice" src="diceImages/yahtzeeBeforeBonus.png" alt="">
-            <img class="rollingDice" src="diceImages/yahtzeeBeforeBonus.png" alt="">
-            <img class="rollingDice" src="diceImages/yahtzeeBeforeBonus.png" alt="">
-            <img class="rollingDice" src="diceImages/yahtzeeBeforeBonus.png" alt="">
-            <img class="rollingDice" src="diceImages/yahtzeeBeforeBonus.png" alt="">
+            <img class="rollingDice" src="./diceImages/yahtzeeBeforeBonus.png" alt="">
+            <img class="rollingDice" src="./diceImages/yahtzeeBeforeBonus.png" alt="">
+            <img class="rollingDice" src="./diceImages/yahtzeeBeforeBonus.png" alt="">
+            <img class="rollingDice" src="./diceImages/yahtzeeBeforeBonus.png" alt="">
+            <img class="rollingDice" src="./diceImages/yahtzeeBeforeBonus.png" alt="">
         </div>
     </div>
     <main>
@@ -155,11 +157,11 @@
                 <tr>
                     <td rowspan="2" class="merge">YAHTZEE <br> BONUS</td>
                     <td><img class="informativeDice" src="diceImages/yahtzeeBonus.png"> FOR <br> EACH BONUS</td>
-                    <td class="results">
+                    <td class="yahtzeeBonusTally">
                         <div class="bonusYahtzee">
-                            <img id="bonus1" class="informativeDice" src="diceImages/yahtzeeBeforeBonus.png">
-                            <img id="bonus2" class="informativeDice" src="diceImages/yahtzeeBeforeBonus.png">
-                            <img id="bonus3" class="informativeDice" src="diceImages/yahtzeeBeforeBonus.png">
+                            <img id="bonus1" class="bonusImg informativeDice" src="diceImages/yahtzeeBeforeBonus.png">
+                            <img id="bonus2" class=" bonusImg informativeDice" src="diceImages/yahtzeeBeforeBonus.png">
+                            <img id="bonus3" class=" bonusImg informativeDice" src="diceImages/yahtzeeBeforeBonus.png">
                         </div>
                     </td>
                     <td id="bonusYahzeeClicker" class="click"></td>
@@ -195,7 +197,7 @@
         <p id="bestScore"></p>
         <p>FINAL SCORE</p>
         <p id="finalScore results"></p>
-        <button id="restart">Restart</button>
+        <button id="restart">New Game</button>
     </div>
 </body>
 </html>
