@@ -52,7 +52,6 @@ for(let individualDice of rollingDice){
         if(maxRerollCount <=1){
             rerollCount++
         }
-        console.log(reRollArray)
     })
 }
 //builds an array for the reroll button to sort through and remove from the original array
@@ -344,19 +343,29 @@ totalingLowerClicker.addEventListener('click',(event)=>{
         lowerSectionClickerCount --
     }
 })
+
+//grand total functionality, also making the end of js functionality for the bottom most of the screen
 //lowerSectionClickerCount === -2
 //upperSectionClickCount === -4
 
 const finalClick = document.getElementById('finalClick')
 const final = document.getElementById('final')
+const bestScore = document.getElementById('bestScore')
+const finalScore = document.getElementById('finalScore')
 
 finalClick.addEventListener('click',(event)=>{
     if(lowerSectionClickerCount === -2 && upperSectionClickCount === -4){
-        final.innerHTML = parseInt(totalingLowerResults)+ parseInt(totalingUppersResults)
+        let total = parseInt(totalingLowerResults)+ parseInt(totalingUppersResults)
+        final.innerHTML = total
         event.target.style.pointerEvents = "none"
         event.target.style.backgroundColor = "red"
         lowerSectionClickerCount = -3
         upperSectionClickCount = -5
+        finalScore.innerHTML = total
+        let didUGetHigher = isScoreHigher(bestScore.innerHTML,total)
+        if(didUGetHigher === true){
+            bestScore.innerHTML = total
+        }
     }
 })
 
@@ -404,6 +413,7 @@ function imageSrc(str){
     return parseInt(newStr[newStr.length-1])
 }
 console.log(imageSrc("124apqrj3./:"))
+
 
 //true or false functions
 function threeOfaKind(arr){
@@ -487,6 +497,13 @@ function yahtZee(arr){
     return totalKey === 1
 }
 
+function isScoreHigher(bestScore,num){
+    let finalScore = num
+    if(finalScore > bestScore){
+        return true
+    }
+
+}
 
 
 
