@@ -235,10 +235,11 @@ totalingUppersClicker.addEventListener('click',(event)=>{
 yahtzeeClicker.addEventListener('click',(event)=>{
     if(conditionCount !== 0 && rerollCount === 0 && yahtzeeCount === 0){
         let choice = yahtZee(d6Array)
+        let score = 0
         if(choice === true){
-            yahtzeeResults.innerHTML === 50
+            yahtzeeResults.innerHTML = score + 50
         } else {
-            yahtzeeResults.innerHTML === 0
+            yahtzeeResults.innerHTML = score
         }
         event.target.style.pointerEvents = "none"
         event.target.style.backgroundColor = "red"

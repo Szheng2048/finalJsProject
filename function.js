@@ -137,11 +137,7 @@ function yahtZee(arr){
             testObj[number] ++
         }
     }
-    let totalKey= 0
-    for(let key in testObj){
-        totalKey++
-    }
-    return totalKey === 1
+    return Object.keys(testObj).length === 1
 }
 
 function isScoreHigher(bestScore,num){
