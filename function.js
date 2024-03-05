@@ -97,9 +97,6 @@ function fullHouse(arr){
     }
     return Object.keys(testObj).length === 2
 }
-
-// arr=[5,3,2,4,1]
-// arr=[1,2,3,4,5]
 function smallStraight(arr){
     arr.sort()
     let continuous = 0
@@ -112,15 +109,24 @@ function smallStraight(arr){
     }
     return continuous >= 3
 }
-//work in progress
 function largeStraight(arr){
-    let continuous = 0
-    for(let i = 0;i < 4;i++){
-        if(arr[i]===arr[i+1]-1){
-            continuous ++
+    arr.sort()
+    let lower = [1,2,3,4,5]
+    let higher = [2,3,4,5,6]
+    if(arr[0]=== 1){
+        for(let i = 1;i<5;i++){
+            if(lower[i] !== arr[i]){
+                return false
+            }
+        }
+    } else if(arr[0]===2){
+        for(let i = 1;i<5;i++){
+            if(higher[i] !== arr[i]){
+                return false
+            }
         }
     }
-    return continuous === 3
+    return true
 }
 function yahtZee(arr){
     let testObj = {}
