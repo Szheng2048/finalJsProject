@@ -1,4 +1,6 @@
-
+body {
+    background-color: antiquewhite;
+}
 main {
     border: 2px solid black;
     text-align: center;
@@ -9,6 +11,7 @@ main {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    width: 500px;
 }
 
 #rollButton:hover{
@@ -86,3 +89,41 @@ sup {
 .disableHover {
     pointer-events: none;
 }
+
+@media (width <= 540px) {
+    body{
+        width:auto;
+    }
+    .instructions {
+        width: 300px;
+    }
+    h1 {
+        padding-left: 110px;
+    }
+    main {
+        display:flex;
+        flex-direction: column;
+        width: 300px;
+    }
+    table {
+        width: 300px;
+    }
+    #diceRollSection {
+        display:flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: left;
+    }
+    #finalScoreSection {
+        display:flex;
+        flex-direction: column;
+        align-items: end;
+        padding-right: 40px;
+    }
+    #restart {
+        border-radius: 30px;
+    }
+    .click {
+        border-radius: 10px;
+    }
+  }
