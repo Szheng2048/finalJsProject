@@ -265,6 +265,7 @@ bonusYahtzeeClicker.addEventListener('click',(event)=>{
                 event.target.style.backgroundColor = "red"
             }
         }
+        yahtzeeClicker.style.pointerEvents = "none"
         resetRolls()
         resetImages()
     }
