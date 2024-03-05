@@ -237,6 +237,8 @@ yahtzeeClicker.addEventListener('click',(event)=>{
         let choice = yahtZee(d6Array)
         if(choice === true){
             yahtzeeResults.innerHTML === 50
+        } else {
+            yahtzeeResults.innerHTML === 0
         }
         event.target.style.pointerEvents = "none"
         event.target.style.backgroundColor = "red"

@@ -120,7 +120,7 @@ function largeStraight(arr){
             continuous ++
         }
     }
-    return continuous > 3
+    return continuous === 3
 }
 function yahtZee(arr){
     let testObj = {}
