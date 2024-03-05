@@ -71,8 +71,9 @@ for(let uppersectionNumber of upperSectionClickitems){
             upperSectionClickCount --
             //math portion of logic
             resetRolls()
+            console.log(event.target)
             //resets the arrays to allow another roll
-            event.target.style.pointerEvents = "none"
+            event.target.classList.add('disableHover')
             event.target.style.backgroundColor = "red"
             //lets user interface know that this button can't be clicked again
             resetImages()
@@ -89,7 +90,7 @@ subTotalingUppers.addEventListener("click",(event)=>{
         }
         console.log(total)
         subtotalOfUppers.innerHTML = `${total}`
-        event.target.style.pointerEvents = "none"
+        event.target.classList.add('disableHover')
         event.target.style.backgroundColor = "red"
         upperSectionClickCount --
     }
@@ -99,7 +100,7 @@ upperBonus.addEventListener('click',(event)=>{
     if(upperSectionClickCount === -1){
         let total = parseInt(subtotalOfUppers.innerHTML)
         let bonus = 0
-        event.target.style.pointerEvents = "none"
+        event.target.classList.add('disableHover')
         event.target.style.backgroundColor = "red"
         if(total>= 63){
             bonus += 35
@@ -112,7 +113,7 @@ upperBonus.addEventListener('click',(event)=>{
 finalUppersButton.addEventListener('click',(event)=>{
     if(upperSectionClickCount === -2){
         finalUppersResult.innerHTML = parseInt(subtotalOfUppers.innerHTML) + parseInt(upperBonusResults.innerHTML)
-        event.target.style.pointerEvents = "none"
+        event.target.classList.add('disableHover')
         event.target.style.backgroundColor = "red"
         upperSectionClickCount--
     }
@@ -130,7 +131,7 @@ threeKindClicker.addEventListener('click',(event)=>{
             }
         }
         threeKindResults.innerHTML = total
-        event.target.style.pointerEvents = "none"
+        event.target.classList.add('disableHover')
         event.target.style.backgroundColor = "red"
         lowerSectionClickerCount --
         resetRolls()
@@ -149,7 +150,7 @@ fourKindClicker.addEventListener('click',(event)=>{
         }
         fourkindResults.innerHTML = total
         console.log(total)
-        event.target.style.pointerEvents = "none"
+        event.target.classList.add('disableHover')
         event.target.style.backgroundColor = "red"
         lowerSectionClickerCount --
         resetRolls()
@@ -166,7 +167,7 @@ fullHouseClicker.addEventListener('click',(event)=>{
         }
         fullHouseResults.innerHTML = total
         console.log(total)
-        event.target.style.pointerEvents = "none"
+        event.target.classList.add('disableHover')
         event.target.style.backgroundColor = "red"
         lowerSectionClickerCount --
         resetRolls()
@@ -183,7 +184,7 @@ smStraightClicker.addEventListener('click',(event)=>{
         }
         smStraightResults.innerHTML = total
         console.log(total)
-        event.target.style.pointerEvents = "none"
+        event.target.classList.add('disableHover')
         event.target.style.backgroundColor = "red"
         lowerSectionClickerCount --
         resetRolls()
@@ -199,7 +200,7 @@ lgStraightClicker.addEventListener('click',(event)=>{
             total += 40
         }
         lgStraightResults.innerHTML = total
-        event.target.style.pointerEvents = "none"
+        event.target.classList.add('disableHover')
         event.target.style.backgroundColor = "red"
         lowerSectionClickerCount --
         resetRolls()
@@ -215,7 +216,7 @@ chanceClicker.addEventListener('click',(event)=>{
         }
         chanceResults.innerHTML = total
         console.log(total)
-        event.target.style.pointerEvents = "none"
+        event.target.classList.add('disableHover')
         event.target.style.backgroundColor = "red"
         lowerSectionClickerCount --
         resetRolls()
@@ -225,7 +226,7 @@ chanceClicker.addEventListener('click',(event)=>{
 
 totalingUppersClicker.addEventListener('click',(event)=>{
     if(upperSectionClickCount === -3){
-        event.target.style.pointerEvents = "none"
+        event.target.classList.add('disableHover')
         event.target.style.backgroundColor = "red"
         totalingUppersResults.innerHTML = finalUppersResult.innerHTML
         upperSectionClickCount --
@@ -242,7 +243,7 @@ yahtzeeClicker.addEventListener('click',(event)=>{
         } else {
             yahtzeeResults.innerHTML = score
         }
-        event.target.style.pointerEvents = "none"
+        event.target.classList.add('disableHover')
         event.target.style.backgroundColor = "red"
         lowerSectionClickerCount --
         resetRolls()
@@ -261,7 +262,7 @@ bonusYahtzeeClicker.addEventListener('click',(event)=>{
                 document.getElementById('bonus2').src = "diceImages/yahtzeeBonus.png"
             } else if(yahtzeeCount === 4){
                 document.getElementById('bonus3').src = "diceImages/yahtzeeBonus.png"
-                event.target.style.pointerEvents = "none"
+                event.target.classList.add('disableHover')
                 event.target.style.backgroundColor = "red"
             }
         }
@@ -278,7 +279,7 @@ bonusYahtzeeFinaleClicker.addEventListener('click',(event)=>{
         } else if(score>0){
             bonusYahtzeeFinaleResults.innerHTML = score
         }
-        event.target.style.pointerEvents = "none"
+        event.target.classList.add('disableHover')
         event.target.style.backgroundColor = "red"
         bonusYahtzeeClicker.style.pointerEvents = "none"
         bonusYahtzeeClicker.style.backgroundColor = "red"
@@ -295,7 +296,7 @@ totalingLowerClicker.addEventListener('click',(event)=>{
             total+=parseInt(item.innerHTML)
         }
         totalingLowerResults.innerHTML = total
-        event.target.style.pointerEvents = "none"
+        event.target.classList.add('disableHover')
         event.target.style.backgroundColor = "red"
         lowerSectionClickerCount --
     }
@@ -307,9 +308,9 @@ totalingLowerClicker.addEventListener('click',(event)=>{
 
 finalClick.addEventListener('click',(event)=>{
     if(lowerSectionClickerCount === -2 && upperSectionClickCount === -4){
-        let total = parseInt(totalingLowerResults)+ parseInt(totalingUppersResults)
+        let total = parseInt(totalingLowerResults.innerHTML)+ parseInt(totalingUppersResults.innerHTML)
         final.innerHTML = total
-        event.target.style.pointerEvents = "none"
+        event.target.classList.add('disableHover')
         event.target.style.backgroundColor = "red"
         lowerSectionClickerCount = -3
         upperSectionClickCount = -5
@@ -321,10 +322,6 @@ finalClick.addEventListener('click',(event)=>{
     }
 })
 //**reset functions */
-const restart = document.getElementById('restart')
-const everyResult = document.querySelectorAll('.results')
-const everyGreenButton = document.querySelectorAll('.click')
-const yahtzeeBonusTally = document.querySelectorAll('bonusImg')
 restart.addEventListener('click',()=>{
     console.log("hello")
     d6Array.length = 0
@@ -340,8 +337,12 @@ restart.addEventListener('click',()=>{
     lowerSectionClickerCount = 7
     yahtzeeCount = 0
     for(let pointer of everyGreenButton){
-        pointer.style.pointerEvents = "auto"
+        pointer.classList.remove("disableHover")
     }
+    for(let pointer of everyGreenButton){
+        pointer.style.backgroundColor = ""
+    }
+    console.log(everyGreenButton)
     for(let num of everyResult){
         num.innerHTML = ""
     }

@@ -82,3 +82,7 @@ sup {
 .click {
     background-color: green;
 }
+
+.disableHover {
+    pointer-events: none;
+}
