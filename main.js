@@ -238,6 +238,7 @@ yahtzeeClicker.addEventListener('click',(event)=>{
         let score = 0
         if(choice === true){
             yahtzeeResults.innerHTML = score + 50
+            yahtzeeCount ++
         } else {
             yahtzeeResults.innerHTML = score
         }
@@ -245,16 +246,15 @@ yahtzeeClicker.addEventListener('click',(event)=>{
         event.target.style.backgroundColor = "red"
         lowerSectionClickerCount --
         resetRolls()
-        yahtzeeCount ++
         resetImages()
     }
 })
 
 bonusYahtzeeClicker.addEventListener('click',(event)=>{
     if(conditionCount !== 0 && rerollCount === 0 && yahtzeeCount >0 && yahtzeeCount<5 && lowerSectionClickerCount >= 0){
-        yahtzeeCount++
         let choice = yahtZee(d6Array)
         if(choice === true){
+            yahtzeeCount++
             if(yahtzeeCount === 2){
                 document.getElementById('bonus1').src = "diceImages/yahtzeeBonus.png"
             } else if(yahtzeeCount === 3){
@@ -265,17 +265,23 @@ bonusYahtzeeClicker.addEventListener('click',(event)=>{
                 event.target.style.backgroundColor = "red"
             }
         }
-        yahtzeeClicker.style.pointerEvents = "none"
         resetRolls()
         resetImages()
     }
 })
-
+console.log(bonusYahtzeeFinaleResults)
 bonusYahtzeeFinaleClicker.addEventListener('click',(event)=>{
     if(lowerSectionClickerCount === 0){
-        bonusYahtzeeFinaleResults.innerHTML === (yahtzeeCount-1)*100
+        let score = (yahtzeeCount-1)*100
+        if(score <= 0){
+            bonusYahtzeeFinaleResults.innerHTML = 0
+        } else if(score>0){
+            bonusYahtzeeFinaleResults.innerHTML = score
+        }
         event.target.style.pointerEvents = "none"
         event.target.style.backgroundColor = "red"
+        bonusYahtzeeClicker.style.pointerEvents = "none"
+        bonusYahtzeeClicker.style.backgroundColor = "red"
         lowerSectionClickerCount --
     }
 })
