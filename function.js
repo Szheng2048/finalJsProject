@@ -61,8 +61,9 @@ function threeOfaKind(arr){
     for(let key in testObj){
         if(testObj[key] >=3){
             return true
-        } else {return false}
+        }
     }
+    return false
 }
 function fourOfaKind(arr){
     let testObj = {}
@@ -101,26 +102,25 @@ function fullHouse(arr){
 // arr=[1,2,3,4,5]
 function smallStraight(arr){
     arr.sort()
-    let count = 0
-    for(let i =0;i < 5;i++){
-        if(i>=1){
-            if(arr[i] -1 === arr[i-1]){
-                count++
-            }
+    let continuous = 0
+    for(let i = 0;i < 4;i++){
+        if(arr[i]===arr[i+1]-1){
+            continuous ++
+        } else if(arr[i]!== arr[i+1]) {
+            continuous = 0
         }
     }
-    if(count > 3){
-        return true
-    }
+    return continuous >= 3
 }
 //work in progress
 function largeStraight(arr){
-    arr.sort()
-    if(arr[3]===arr[2]+1 && arr[4]===arr[2]+2 && arr[1]===arr[2]-1 && arr[0]===arr[2]-2){
-        return true
-    } else {
-        return false
+    let continuous = 0
+    for(let i = 0;i < 4;i++){
+        if(arr[i]===arr[i+1]-1){
+            continuous ++
+        }
     }
+    return continuous > 3
 }
 function yahtZee(arr){
     let testObj = {}
