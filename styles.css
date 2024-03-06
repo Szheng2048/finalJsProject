@@ -126,4 +126,19 @@ sup {
     .click {
         border-radius: 10px;
     }
+    #rollButton{
+        position:fixed;
+        bottom:100px;
+    }
+    #reRollButton{
+        position:fixed;
+        bottom:40px;
+    }
+    #diceBox{
+        position:fixed;
+        bottom:0px;
+    }
+    .click:hover{
+        background-color: green;
+    }
   }
