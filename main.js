@@ -16,7 +16,6 @@ let upperSectionClickCount = 6
 rollButton.addEventListener("click",()=>{
     if(conditionCount === 0){
         d6Array.push(randomD6result(),randomD6result(),randomD6result(),randomD6result(),randomD6result())
-        console.log(d6Array)
         for(let i = 0;i<rollingDice.length;i++){
             rollingDice[i].src= `./diceImages/dice-face-${d6Array[i]}.png`
         }
@@ -38,7 +37,6 @@ for(let individualDice of rollingDice){
         if(maxRerollCount <=1){
             rerollCount++
         }
-        console.log(reRollArray)
     })
 }
 //builds an array for the reroll button to sort through and remove from the original array
@@ -55,7 +53,6 @@ rerollButton.addEventListener("click",()=>{
         maxRerollCount++
         rerollCount = 0
     }
-    console.log(d6Array)
 })
 
 //************uppersection numbers event listener */
@@ -88,7 +85,6 @@ subTotalingUppers.addEventListener("click",(event)=>{
         for(let value of upperResults){
             total += parseInt(value.innerHTML)
         }
-        console.log(total)
         subtotalOfUppers.innerHTML = `${total}`
         event.target.classList.add('disableHover')
         event.target.style.backgroundColor = "red"
@@ -323,7 +319,6 @@ finalClick.addEventListener('click',(event)=>{
 })
 //**reset functions */
 restart.addEventListener('click',()=>{
-    console.log("hello")
     d6Array.length = 0
     reRollArray.length = 0
     conditionCount = 0
@@ -342,12 +337,13 @@ restart.addEventListener('click',()=>{
     for(let pointer of everyGreenButton){
         pointer.style.backgroundColor = ""
     }
-    console.log(everyGreenButton)
     for(let num of everyResult){
         num.innerHTML = ""
     }
+    console.log(yahtzeeBonusTally)
     for(let image of yahtzeeBonusTally){
         image.src = "diceImages/yahtzeeBeforeBonus.png"
+        console.log(image)
     }
 })
 
