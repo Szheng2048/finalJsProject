@@ -29,16 +29,17 @@ for(let individualDice of rollingDice){
             if(!event.target.classList.contains("selected")){
                 event.target.classList.add("selected")
                 reRollArray.push(imageSrc(event.target.src))
+                rerollCount++
             } else if(event.target.classList.contains('selected')){
                 event.target.classList.remove('selected')
                 if(reRollArray.indexOf(imageSrc(event.target.src))!== -1){
                     reRollArray.splice(reRollArray.indexOf(imageSrc(event.target.src)),1)
-                    console.log(reRollArray)
+                    rerollCount --
                 }
         }}
-        if(maxRerollCount <=1){
-            rerollCount++
-        }
+        // if(maxRerollCount <=1){
+        //     rerollCount++
+        // }
         })
 }
 //builds an array for the reroll button to sort through and remove from the original array
