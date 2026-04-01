@@ -45,7 +45,6 @@ function imageSrc(str){
     }
     return parseInt(newStr[newStr.length-1])
 }
-console.log(imageSrc("124apqrj3./:"))
 
 
 //true or false functions

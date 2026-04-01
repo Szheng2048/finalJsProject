@@ -29,15 +29,17 @@ for(let individualDice of rollingDice){
             if(!event.target.classList.contains("selected")){
                 event.target.classList.add("selected")
                 reRollArray.push(imageSrc(event.target.src))
-            }
-        // } else if(event.target.classList.contains('selected')){
-        //     event.target.classList.remove('selected')
-        //     reRollArray = replaceItemInArray(reRollArray,[imageSrc(event.target.src)])
-        }
+            } else if(event.target.classList.contains('selected')){
+                event.target.classList.remove('selected')
+                if(reRollArray.indexOf(imageSrc(event.target.src))!== -1){
+                    reRollArray.splice(reRollArray.indexOf(imageSrc(event.target.src)),1)
+                    console.log(reRollArray)
+                }
+        }}
         if(maxRerollCount <=1){
             rerollCount++
         }
-    })
+        })
 }
 //builds an array for the reroll button to sort through and remove from the original array
 
@@ -45,6 +47,7 @@ for(let individualDice of rollingDice){
 
 rerollButton.addEventListener("click",()=>{
     d6Array = replaceItemInArray(d6Array,reRollArray)
+    reRollArray = []
     if(rerollCount>0&&conditionCount===1&&maxRerollCount===0||maxRerollCount===1){
         for(let i = 0;i<rollingDice.length;i++){
             rollingDice[i].src= `./diceImages/dice-face-${d6Array[i]}.png`
@@ -266,7 +269,6 @@ bonusYahtzeeClicker.addEventListener('click',(event)=>{
         resetImages()
     }
 })
-console.log(bonusYahtzeeFinaleResults)
 bonusYahtzeeFinaleClicker.addEventListener('click',(event)=>{
     if(lowerSectionClickerCount === 0){
         let score = (yahtzeeCount-1)*100
