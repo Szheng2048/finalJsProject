@@ -96,17 +96,21 @@ function fullHouse(arr){
     }
     return Object.keys(testObj).length === 2
 }
-function smallStraight(arr){
-    arr.sort()
-    let continuous = 0
-    for(let i = 0;i < 4;i++){
-        if(arr[i]===arr[i+1]-1){
-            continuous ++
-        } else if(arr[i]!== arr[i+1]) {
-            continuous = 0
+function smallStraight(arr) {
+    arr = [...new Set(arr)].sort((a,b) => a - b)
+
+    let continuous = 1
+
+    for (let i = 0; i < arr.length - 1; i++) {
+        if (arr[i] + 1 === arr[i+1]) {
+            continuous++
+            if (continuous >= 4) return true
+        } else {
+            continuous = 1
         }
     }
-    return continuous >= 3
+
+    return false
 }
 function largeStraight(arr){
     arr.sort()
